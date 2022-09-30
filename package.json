@@ -1,9 +1,9 @@
 {
-   "name": "book-app",
+   "name": "book-directory",
    "version": "0.0.1",
    "description": "Book directory application.",
    "type": "commonjs",
-   "author":"geniusapc",
+   "author": "geniusapc",
    "devDependencies": {
       "@types/express": "^4.17.14",
       "@types/node": "^16.11.10",
