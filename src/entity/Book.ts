@@ -2,7 +2,6 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 @Entity()
 export class Book {
-
     @PrimaryGeneratedColumn()
     id: number
 
@@ -15,8 +14,6 @@ export class Book {
     @Column()
     genre: string
 
-    @Column()
-    published_at: string
-
-
+    @Column({ type: "timestamptz" })
+    published_at: Date
 }

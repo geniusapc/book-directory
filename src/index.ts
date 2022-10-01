@@ -9,7 +9,7 @@ import routes from "./controller"
 
 AppDataSource.initialize().then(async () => {
     const app = express()
-    app.use(express.JSON())
+    app.use(express.json())
     app.use(express.urlencoded({ extended: false }))
 
     app.use("/api/v1", routes)
