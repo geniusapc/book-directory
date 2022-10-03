@@ -1,14 +1,25 @@
 import { Request, Response, NextFunction } from "express"
+
 import { Book } from "../entity/Book"
 import { AppDataSource } from "../data-source"
 import { TBooks } from "../types/books"
 import { response } from "../utils/response"
+import { ILike } from "typeorm"
 
 const bookRepository = AppDataSource.getRepository(Book)
 
 export const getBooks = async (req: Request, res: Response, next: NextFunction) => {
-    const { } = req.query
-    const conditions = {}
+    const { q } = req.query
+    let conditions = {} as { where?: any[] }
+    if (q) {
+        let search = [
+            { title: ILike(q) },
+            { author: ILike(q) },
+            { genre: ILike(q) }
+        ]
+        conditions.where = search
+    }
+
     const books = await bookRepository.find(conditions)
     return response(res, books)
 }
